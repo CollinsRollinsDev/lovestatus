@@ -1,5 +1,7 @@
 alert("This is a fun app only and the results displayed by the system should not be taken seriously. 🤣So don't go break your lover's head if you are shown a negative result!");
 
+let showTheResult = document.querySelector(".showResult");
+let out = document.querySelector(".out");
 function letRun() {
   let getit = document.querySelector(".val1").value;
   let setit = document.querySelector(".val2").value;
@@ -60,10 +62,24 @@ function letRun() {
     output = `Perfect!!! 💥 💥 💥 ${getit}! Congratulations, you will be married to the most outstanding spouse in the world. `;
   } 
   
-  document.querySelector(".showResult ").innerHTML ="Please wait...";
-  setTimeout(() => { document.querySelector(".showResult").innerHTML = run + "%"; }, 15000);
+     let startRun = 0;
+    showTheResult.innerText="Please wait...";
+  setTimeout(() => {
+    showTheResult.innerText = run + "%"; 
+    setInterval(() => {
+    if(startRun < run) {
+      startRun++;
+    showTheResult.innerText = startRun + "%";
+    }
+    
+  }, 10);
+    
+  }, 15000);
   
-  document.querySelector(".out").innerHTML = "";
-  setTimeout(() => { document.querySelector(".out").innerHTML ="Loading.... "; }, 7000);
-  setTimeout(() => { document.querySelector(".out").innerHTML = output; }, 15000);
+  
+    out.innerText = "";
+  setTimeout(() => { out.innerText ="Loading.... "; }, 7000);
+  setTimeout(() => {out.innerText= output; }, 16000);
+  
+ 
 }
